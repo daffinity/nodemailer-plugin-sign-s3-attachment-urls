@@ -1,0 +1,4 @@
+-R spec
+--recursive
+--compilers js:babel-register
+--inline-diffs

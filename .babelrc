@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "env"
+  ],
+  "sourceMaps": "inline",
+  "plugins": [
+    "transform-runtime"
+  ]
+}
