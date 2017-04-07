@@ -1,7 +1,7 @@
 {
   "name": "nodemailer-plugin-sign-s3-attachment-urls",
   "description": "Sign Amazon S3 URLs in nodemailer attachments for download.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "John Wells <jwells@daffinity.com>",
   "bugs": "https://github.com/daffinity/nodemailer-plugin-sign-s3-attachment-urls/issues",
   "dependencies": {
