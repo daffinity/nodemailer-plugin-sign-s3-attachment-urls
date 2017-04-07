@@ -9,13 +9,15 @@ export default function signS3AttachmentUrls (options = {}) {
   if (options.defaultBucket && !_.isString(options.defaultBucket)) throw Error('Option `defaultBucket` must be a String (e.g. `signS3AttachmentUrls({ defaultBucket: "mybucket" })`');
 
   // Set defaults.
-  const opts = _.defaultsDeep(opts, {
+  const opts = _.defaultsDeep(options, {
     s3: {
       apiVersion: '2006-03-01',
       // Require AWS signature version 4 to enforce signing of metadata parameters.
       SignatureVersion: 'v4'
     }
   });
+
+  const compileOpts = _.omit(opts, ['s3']);
 
   // Prepare S3 using config.
   const s3 = new AWS.S3(opts.s3);
@@ -24,8 +26,8 @@ export default function signS3AttachmentUrls (options = {}) {
   return function _compile (mail, callback) {
     try {
       // The nodemailer plugin pattern expects us to mutate mail instead of returning it.
-      compile(mail, s3, opts)
-        .then(() => callback(null))
+      compile(mail, s3, compileOpts)
+        .then(() => callback())
         .catch(callback);
     }
     catch (err) {
