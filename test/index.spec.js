@@ -59,7 +59,7 @@ describe('#signS3AttachmentUrls', () => {
             expect(mail.data).to.be.an('object');
             expect(mail.data.attachments).to.be.an('array');
             expect(mail.data.attachments[0]).to.be.an('object');
-            expect(mail.data.attachments[0].url)
+            expect(mail.data.attachments[0].href)
               .to.be.a('string')
               .to.match(/^https:\/\/s3.amazonaws.com\/default_bucket\/test?.*$/);
           }
@@ -118,7 +118,7 @@ describe('#compile', () => {
             }, s3, {}))
             .to.eql({
               data: {
-                attachments: [{ url: 'mock://example/test' }]
+                attachments: [{ href: 'mock://example/test' }]
               }
             });
         });
@@ -133,7 +133,7 @@ describe('#compile', () => {
                 }, s3, { defaultBucket: 'default_example' }))
                 .to.eql({
                   data: {
-                    attachments: [{ url: 'mock://default_example/test' }]
+                    attachments: [{ href: 'mock://default_example/test' }]
                   }
                 });
             });
@@ -148,7 +148,7 @@ describe('#compile', () => {
                 }, s3, { defaultBucket: 'default_example' }))
                 .to.eql({
                   data: {
-                    attachments: [{ url: 'mock://example/test' }]
+                    attachments: [{ href: 'mock://example/test' }]
                   }
                 });
             });

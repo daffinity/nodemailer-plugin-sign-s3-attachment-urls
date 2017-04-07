@@ -69,7 +69,7 @@ export async function compile (mail, s3, options) {
     // Remove s3 options from the attachment.
     _.unset(attachment, 's3');
     // Add the signed URL to the attachment for download by nodemailer.
-    attachment.url = signedUrl;
+    attachment.href = signedUrl;
 
     return attachment;
   });
